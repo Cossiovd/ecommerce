@@ -5,7 +5,7 @@ export const veterinaryProducts = [
     stock: 45,
     price: 180000,
     category: "Alimentación",
-    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop"
+    image: "src/assets/prod_9.jpg"
   },
   {
     title: "Croquetas de Salmón para Gatos",
@@ -13,15 +13,15 @@ export const veterinaryProducts = [
     stock: 30,
     price: 114000,
     category: "Alimentación",
-    image: "https://images.unsplash.com/photo-1623366302587-bca81ddbf8ab?q=80&w=600&auto=format&fit=crop"
+    image: "src/assets/prod_11.png"
   },
   {
-    title: "Collar Antipulgas Seresto",
-    descripcion: "Protección continua por hasta 8 meses contra pulgas y garrapatas. Resistente al agua y sin olor.",
+    title: "Collar",
+    descripcion: "Collar.",
     stock: 120,
     price: 220000,
-    category: "Farmacia",
-    image: "https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?q=80&w=600&auto=format&fit=crop"
+    category: "Accesorios",
+    image: "src/assets/prod_3.jpg"
   },
   {
     title: "Shampoo Avena y Aloe Vera",
@@ -29,7 +29,7 @@ export const veterinaryProducts = [
     stock: 60,
     price: 60000,
     category: "Higiene",
-    image: "https://images.unsplash.com/photo-1583337260546-28b610fcac8f?q=80&w=600&auto=format&fit=crop"
+    image: "src/assets/prod_2.jpg"
   },
   {
     title: "Cama Ortopédica Memory Foam",
@@ -37,7 +37,7 @@ export const veterinaryProducts = [
     stock: 15,
     price: 360000,
     category: "Accesorios",
-    image: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=600&auto=format&fit=crop"
+    image: "src/assets/prod_8.jpg"
   },
   {
     title: "Vitaminas Articulares Condroprotectoras",
@@ -53,7 +53,7 @@ export const veterinaryProducts = [
     stock: 50,
     price: 88000,
     category: "Juguetes",
-    image: "https://images.unsplash.com/photo-1576201836106-db1758fd1c97?q=80&w=600&auto=format&fit=crop"
+    image: "src/assets/prod_4.jpg"
   },
   {
     title: "Cepillo Deslanador Profesional",
@@ -69,7 +69,7 @@ export const veterinaryProducts = [
     stock: 85,
     price: 98000,
     category: "Higiene",
-    image: "https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?q=80&w=600&auto=format&fit=crop"
+    image: "src/assets/prod_7.jpg"
   },
   {
     title: "Snacks Dentales Limpieza Profunda",
@@ -77,6 +77,6 @@ export const veterinaryProducts = [
     stock: 200,
     price: 50000,
     category: "Snacks",
-    image: "https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop"
+    image: "src/assets/prod_6.jpg"
   }
 ];

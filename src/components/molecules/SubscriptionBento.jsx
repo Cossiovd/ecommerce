@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from '../atoms/Button';
+import suscribe from "../../assets/suscribe.png"
 
 const SubscriptionBento = () => {
   return (
@@ -12,7 +13,7 @@ const SubscriptionBento = () => {
             <Button variant="white">Start Subscription</Button>
           </div>
           <div className="absolute bottom-0 right-0 w-1/2 h-full">
-            <img alt="Subscribe" className="w-full h-full object-cover opacity-60" data-alt="Warm photograph of a happy puppy playing with a squeaky toy on a cozy rug, representing household happiness" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrZaf1_jVbsbhJhSn2tLm3mZuBOVu0RShsFPf3qSChNEA2MwNNTInoGq4vp648a77IqnreUjaLfogGKS2mEqDDr5m_Jcved4zcstBPvVYJ22Nr0JBsbAu93aDRovynsFg4usWHejpgu0pcf2ORX8SVi5GwFeQFzMr4qzobxP7Z8IYFxD-fB_-mvMJar23MOP2vGt82KWk0yao1H-3FHdbXz--PU8P6-UunS29kHySnr4ZivwuxLlzB-Srq6wBLkvuaW_PXWZ9U4Q" />
+            <img alt="Subscribe" className="w-full h-full object-cover opacity-60" data-alt="Warm photograph of a happy puppy playing with a squeaky toy on a cozy rug, representing household happiness" src={suscribe} />
           </div>
         </div>
         <div className="bg-secondary-container rounded-[32px] p-10 flex flex-col items-center text-center justify-center text-on-secondary-container h-[360px]">

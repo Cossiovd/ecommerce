@@ -4,6 +4,7 @@ import { db } from '../services/firebase';
 import MainLayout from '../components/templates/MainLayout';
 import Button from '../components/atoms/Button';
 import ProductCard from '../components/molecules/ProductCard';
+import bannerCatalog from "../assets/banner_catalog.png"
 
 const Catalog = () => {
   // Pagination, Search & Data state
@@ -175,7 +176,7 @@ const Catalog = () => {
             <button className="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-label-sm shadow-lg hover:shadow-xl transition-all">Shop Winter Sale</button>
           </div>
           <div className="absolute right-0 bottom-0 top-0 w-1/2 hidden lg:block">
-            <img className="w-full h-full object-cover" alt="dogs in snow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1vFvEHg8c8FtebM53DhAQFMSO5ck38lxWbl5rMnxZ0INQCbx69VZmv_Sj8ccfWdKydOwCZlx2rc46P3DSJ07UtqNewA9rxBKz_s9AY-eKOZh2SoHgGlwLp6cyIyIhPlkKk4bHtJge9d35VXlIjSFwNc-Pm07-KpIt1iI3WfMhMUuKFIXPXHmI6UE58lSw53XFugnfiJtc-HouEu72iZkGUI3RTb9620-sXhRJ1-VlOEiSc-SDhi6iY0-bV1quHQddn5TqMcOuIw" />
+            <img className="w-full h-full object-cover" alt="dogs in snow" src={bannerCatalog}/>
             <div className="absolute inset-0 bg-gradient-to-r from-tertiary-container via-transparent to-transparent"></div>
           </div>
         </section>
