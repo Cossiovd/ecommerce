@@ -5,6 +5,7 @@ import Button from "../components/atoms/Button"
 import Input from "../components/atoms/Input"
 import Checkbox from "../components/atoms/Checkbox"
 import { useCartStore } from "../store/useCartStore"
+import { formatPrice } from "../utils/currency"
 
 const Checkout = () => {
   const navigate = useNavigate()
@@ -24,9 +25,9 @@ const Checkout = () => {
     saveInfo: false
   })
 
-  const subtotal = cart.reduce((acc, item) => acc + (item.price * (item.quantity || 1)), 0)
-  const shipping = subtotal > 50 ? 0 : 5.99
-  const tax = subtotal * 0.08
+  const subtotal = cart.reduce((acc, item) => acc + (parseFloat(item.price || 0) * (item.quantity || 1)), 0)
+  const shipping = subtotal > 200000 ? 0 : 15000
+  const tax = subtotal * 0.19
   const total = subtotal > 0 ? subtotal + shipping + tax : 0
 
   const handleChange = (e) => {
@@ -256,7 +257,7 @@ const Checkout = () => {
                       <span className="font-caption text-on-surface-variant">{item.category}</span>
                     </div>
                     <span className="font-label-sm text-primary-container whitespace-nowrap">
-                      ${(item.price * (item.quantity || 1)).toFixed(2)}
+                      {formatPrice(parseFloat(item.price || 0) * (item.quantity || 1))}
                     </span>
                   </div>
                 ))}
@@ -276,23 +277,23 @@ const Checkout = () => {
               <div className="flex flex-col gap-3 mb-6">
                 <div className="flex justify-between items-center text-on-surface-variant">
                   <span className="font-body-md">Subtotal</span>
-                  <span className="font-label-sm text-primary-container">${subtotal.toFixed(2)}</span>
+                  <span className="font-label-sm text-primary-container">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between items-center text-on-surface-variant">
                   <span className="font-body-md flex items-center gap-1">Shipping</span>
-                  <span className="font-label-sm text-primary-container">{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                  <span className="font-label-sm text-primary-container">{shipping === 0 ? 'Free' : formatPrice(shipping)}</span>
                 </div>
                 <div className="flex justify-between items-center text-on-surface-variant">
                   <span className="font-body-md">Estimated Tax</span>
-                  <span className="font-label-sm text-primary-container">${tax.toFixed(2)}</span>
+                  <span className="font-label-sm text-primary-container">{formatPrice(tax)}</span>
                 </div>
               </div>
 
               <div className="flex justify-between items-end mb-8 pt-4 border-t border-surface-container-high">
                 <span className="font-h3 text-primary-container">Total</span>
                 <div className="flex items-end gap-2">
-                  <span className="font-caption text-on-surface-variant mb-1">USD</span>
-                  <span className="font-display text-[28px] font-bold text-primary-container leading-none">${total.toFixed(2)}</span>
+                  <span className="font-caption text-on-surface-variant mb-1">COP</span>
+                  <span className="font-display text-[28px] font-bold text-primary-container leading-none">{formatPrice(total)}</span>
                 </div>
               </div>
 
@@ -301,7 +302,7 @@ const Checkout = () => {
                 type="submit" 
                 className="w-full !py-4 text-[18px] bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 group"
               >
-                Pay ${total.toFixed(2)}
+                Pay {formatPrice(total)}
                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-1" style={{ fontVariationSettings: "'FILL' 1" }}>arrow_forward</span>
               </Button>
             </div>

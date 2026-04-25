@@ -6,6 +6,7 @@ import MainLayout from '../components/templates/MainLayout';
 import Button from '../components/atoms/Button';
 import Badge from '../components/atoms/Badge';
 import { useCartStore } from '../store/useCartStore';
+import { formatPrice } from '../utils/currency';
 
 const Product = () => {
     const { id } = useParams();
@@ -80,10 +81,8 @@ const Product = () => {
         );
     }
 
-    // Determine the image to display (handling Firebase fields like image, imageUrl, or imageSrc)
-    const finalImage = productDetails.imageSrc || productDetails.image || productDetails.imageUrl || 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop';
+    const finalImage = productDetails.imageSrc || productDetails.image || productDetails.imageUrl;
 
-    // Fallback for stock and other missing fields
     const inStock = productDetails.inStock !== undefined ? productDetails.inStock : true;
     const rating = productDetails.rating || '4.5';
     const reviews = productDetails.reviews || Math.floor(Math.random() * 200) + 10;
@@ -141,11 +140,11 @@ const Product = () => {
 
                         <div className="flex items-end gap-3 mb-8">
                             <span className="font-display text-[40px] font-bold text-primary-container leading-none">
-                                ${productDetails.price}
+                                {formatPrice(productDetails.price)}
                             </span>
                             {productDetails.originalPrice && (
                                 <span className="text-on-surface-variant line-through text-lg mb-1">
-                                    ${parseFloat(productDetails.originalPrice).toFixed(2)}
+                                    {formatPrice(productDetails.originalPrice)}
                                 </span>
                             )}
                         </div>
@@ -200,7 +199,7 @@ const Product = () => {
                                     disabled={!inStock}
                                 >
                                     <span className="material-symbols-outlined">shopping_cart</span>
-                                    Add to Cart - ${(parseFloat(productDetails.price) * quantity).toFixed(2)}
+                                    Add to Cart - {formatPrice(parseFloat(productDetails.price) * quantity)}
                                 </Button>
                             </div>
                         </div>

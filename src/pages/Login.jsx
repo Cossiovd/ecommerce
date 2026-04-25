@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../services/firebase';
+import { loginUser } from '../services/auth';
 import MainLayout from '../components/templates/MainLayout';
 import Input from '../components/atoms/Input';
 import Button from '../components/atoms/Button';
@@ -27,19 +28,20 @@ const Login = () => {
         setError('');
         setLoading(true);
 
-        try {
-            await signInWithEmailAndPassword(auth, email, password);
-            navigate('/profile');
-        } catch (error) {
-            console.error('Login error:', error.code, error.message);
-            if (error.code === 'auth/invalid-credential' || error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+        const { user, error: authError } = await loginUser(email, password);
+        
+        if (authError) {
+            console.error('Login error:', authError.code, authError.message);
+            if (authError.code === 'auth/invalid-credential' || authError.code === 'auth/user-not-found' || authError.code === 'auth/wrong-password') {
                 setError('Invalid email or password.');
             } else {
                 setError('Failed to log in. Please try again later.');
             }
-        } finally {
-            setLoading(false);
+        } else if (user) {
+            navigate('/profile');
         }
+        
+        setLoading(false);
     };
 
     return (

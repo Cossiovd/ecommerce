@@ -4,13 +4,14 @@ import MainLayout from "../components/templates/MainLayout"
 import Button from "../components/atoms/Button"
 import IconButton from "../components/atoms/IconButton"
 import { useCartStore } from "../store/useCartStore"
+import { formatPrice } from "../utils/currency"
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCartStore()
 
   const subtotal = cart.reduce((acc, item) => acc + (parseFloat(item.price || 0) * (item.quantity || 1)), 0)
-  const shipping = subtotal > 50 ? 0 : 5.99; // Free shipping over $50 as per product page
-  const tax = subtotal * 0.08; // 8% mock tax
+  const shipping = subtotal > 200000 ? 0 : 15000; // Free shipping over 200,000 COP
+  const tax = subtotal * 0.19; // 19% mock tax for Colombia
   const total = subtotal > 0 ? subtotal + shipping + tax : 0;
 
   return (
@@ -56,7 +57,7 @@ const Cart = () => {
                         <Link to={`/product/${item.id}`} className="font-h3 text-[18px] text-primary-container hover:text-secondary transition-colors line-clamp-2 leading-tight mb-2">
                           {item.title}
                         </Link>
-                        <span className="font-label-sm text-on-surface-variant">${parseFloat(item.price || 0).toFixed(2)}</span>
+                        <span className="font-label-sm text-on-surface-variant">{formatPrice(parseFloat(item.price || 0))}</span>
                       </div>
                     </div>
 
@@ -81,7 +82,7 @@ const Cart = () => {
                     {/* Price & Remove */}
                     <div className="md:col-span-3 flex items-center justify-between md:justify-end gap-4">
                       <span className="font-h3 text-primary-container block md:hidden">Total:</span>
-                      <span className="font-h3 text-[18px] text-primary-container">${(parseFloat(item.price || 0) * (item.quantity || 1)).toFixed(2)}</span>
+                      <span className="font-h3 text-[18px] text-primary-container">{formatPrice(parseFloat(item.price || 0) * (item.quantity || 1))}</span>
                       <button 
                         onClick={() => removeFromCart(item.id)}
                         className="md:absolute right-0 top-1/2 md:-translate-y-1/2 w-10 h-10 rounded-full bg-white flex items-center justify-center text-outline hover:text-error hover:bg-error-container/30 transition-all shadow-sm border border-outline-variant/30 md:opacity-0 group-hover:opacity-100"
@@ -103,24 +104,24 @@ const Cart = () => {
                 <div className="flex flex-col gap-4 mb-8">
                   <div className="flex justify-between items-center text-on-primary-container">
                     <span className="font-body-md">Subtotal</span>
-                    <span className="font-label-sm text-white">${subtotal.toFixed(2)}</span>
+                    <span className="font-label-sm text-white">{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between items-center text-on-primary-container">
                     <span className="font-body-md flex items-center gap-1">
                       Shipping
-                      <span className="material-symbols-outlined text-[16px] cursor-help" title="Free shipping over $50">info</span>
+                      <span className="material-symbols-outlined text-[16px] cursor-help" title="Free shipping over 200,000 COP">info</span>
                     </span>
-                    <span className="font-label-sm text-white">{shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}</span>
+                    <span className="font-label-sm text-white">{shipping === 0 ? 'Free' : formatPrice(shipping)}</span>
                   </div>
                   <div className="flex justify-between items-center text-on-primary-container">
                     <span className="font-body-md">Estimated Tax</span>
-                    <span className="font-label-sm text-white">${tax.toFixed(2)}</span>
+                    <span className="font-label-sm text-white">{formatPrice(tax)}</span>
                   </div>
                 </div>
 
                 <div className="flex justify-between items-end mb-8 pt-6 border-t border-white/10">
                   <span className="font-h3 text-white">Total</span>
-                  <span className="font-display text-[32px] font-bold text-white leading-none">${total.toFixed(2)}</span>
+                  <span className="font-display text-[32px] font-bold text-white leading-none">{formatPrice(total)}</span>
                 </div>
 
                 <Link to="/checkout" className="w-full">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Badge from '../atoms/Badge';
+import { formatPrice } from '../../utils/currency';
 
 const ProductCard = ({
   id,
@@ -14,11 +15,10 @@ const ProductCard = ({
   title,
   price,
   originalPrice,
-  rating,
   buttonType = 'round', // 'round' | 'full'
   showFavorite = false
 }) => {
-  const finalImage = imageSrc || image || imageUrl || 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop';
+  const finalImage = imageSrc || image || imageUrl;
 
   return (
     <div className="group relative bg-white rounded-3xl p-4 md:p-6 mb-4 shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300">
@@ -63,8 +63,8 @@ const ProductCard = ({
         </Link>
         <div className="flex items-center justify-between">
           <div className="flex flex-col">
-            <span className="font-h1 text-h2 text-secondary">{price}</span>
-            {originalPrice && <span className="text-slate-400 line-through text-caption">{originalPrice}</span>}
+            <span className="font-h1 text-h2 text-secondary">{formatPrice(price)}</span>
+            {originalPrice && <span className="text-slate-400 line-through text-caption">{formatPrice(originalPrice)}</span>}
           </div>
         </div>
       </div>

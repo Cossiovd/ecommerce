@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import IconButton from '../atoms/IconButton';
 import { useCartStore } from '../../store/useCartStore';
+import logo from '../../assets/logo.png';
 
 const Navbar = () => {
   const { cart } = useCartStore();
@@ -18,7 +19,7 @@ const Navbar = () => {
         {/* Brand */}
         <Link to="/" className="flex items-center gap-4 group">
           <div className="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border-2 border-white shadow-sm flex items-center justify-center group-hover:scale-105 transition-transform">
-            <img alt="VetCare Logo" className="w-full h-full object-cover" src="/assets/logo.png" onError={(e) => { e.target.src = '../public/assets/logo'; }} />
+            <img alt="VetCare Logo" className="w-full h-full object-cover" src={logo} onError={(e)=> e.target.src = "../../assets/logo.png"} />
           </div>
           <h1 className="text-xl font-bold text-[#0A2540] tracking-tight font-['Plus_Jakarta_Sans'] group-hover:text-secondary transition-colors">VetCare</h1>
         </Link>

@@ -1,6 +1,7 @@
 import React from 'react';
 import Badge from '../atoms/Badge';
 import Button from '../atoms/Button';
+import heroImage from '../../assets/imagen_home.png';
 
 const HeroSection = () => {
   return (
@@ -19,7 +20,7 @@ const HeroSection = () => {
         </div>
         <div className="relative w-full md:w-1/2 flex justify-center items-center">
           <div className="absolute inset-0 bg-gradient-to-tr from-secondary-container/20 to-transparent rounded-full blur-3xl"></div>
-          <img alt="Hero Pet" className="relative z-10 w-full max-w-md drop-shadow-2xl object-contain" data-alt="Studio portrait of a cute small dog and a cat sitting together peacefully on a soft blue background with clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHJrVy_HOpWSZT-Vz_xenjvDcUKDqJDC6hDHH5HQ993O0nWMNYps-kYrFgkknafdEP5SYMgljFwwu2OBHc7J-9o5yBCYq710zi-dhKaDlFtGOgENhZB8AC0QsdLC5donNWYIrYpfeU_tq4S6_4zxZoKi4qe7HqDYMAodiGbAT8i-QA2qL4I7T5JoPIHHICGcwgVBEdckTtktz4RbPTUV_5mIqSCSiV3FVzKxMqOqK6pc4YoLvdkW-P2xs0mDJkvUaOerHtjc6ccg" />
+          <img alt="Hero Pet" className="relative z-10 w-full max-w-md drop-shadow-2xl object-contain" data-alt="Studio portrait of a cute small dog and a cat sitting together peacefully on a soft blue background with clean lighting" src={heroImage} />
         </div>
       </div>
     </section>

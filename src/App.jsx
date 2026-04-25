@@ -8,6 +8,7 @@ import Product from "./pages/Product"
 import Checkout from "./pages/Checkout"
 import Prueba from "./pages/prueba"
 import Profile from "./pages/Profile"
+import PublicRoute from "./components/routes/PublicRoute"
 
 function App() {
   return (
@@ -15,8 +16,16 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/catalog" element={<Catalog />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={
+        <PublicRoute>
+          <Login />
+        </PublicRoute>
+      } />
+      <Route path="/register" element={
+        <PublicRoute>
+          <Register />
+        </PublicRoute>
+      } />
       <Route path="/product/:id" element={<Product />} />
       <Route path="/checkout" element={<Checkout />} />
       <Route path="/prueba" element={<Prueba />} />
