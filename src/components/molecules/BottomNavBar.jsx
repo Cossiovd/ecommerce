@@ -28,7 +28,7 @@ const BottomNavBar = () => {
         {({ isActive }) => (
           <>
             <span className="material-symbols-outlined" style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}>pets</span>
-            <span className="font-['Plus_Jakarta_Sans'] text-[11px] mt-1">Shop</span>
+            <span className="font-['Plus_Jakarta_Sans'] text-[11px] mt-1">Tienda</span>
           </>
         )}
       </NavLink>
@@ -42,7 +42,7 @@ const BottomNavBar = () => {
                 <span className="absolute -top-1 -right-1 w-3 h-3 bg-secondary-container rounded-full border border-white flex items-center justify-center text-[8px] text-on-secondary-container font-bold"></span>
               )}
             </div>
-            <span className="font-['Plus_Jakarta_Sans'] text-[11px] mt-1">Cart</span>
+            <span className="font-['Plus_Jakarta_Sans'] text-[11px] mt-1">Carro</span>
           </>
         )}
       </NavLink>
@@ -52,7 +52,7 @@ const BottomNavBar = () => {
         {({ isActive }) => (
           <>
             <span className="material-symbols-outlined" style={{ fontVariationSettings: isActive ? "'FILL' 1" : "'FILL' 0" }}>person</span>
-            <span className="font-['Plus_Jakarta_Sans'] text-[11px] mt-1">Profile</span>
+            <span className="font-['Plus_Jakarta_Sans'] text-[11px] mt-1">Perfil</span>
           </>
         )}
       </NavLink>

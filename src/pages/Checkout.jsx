@@ -40,22 +40,21 @@ const Checkout = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Mock processing order
     console.log("Order placed:", { formData, cart, total })
     alert("Order placed successfully! In a real app, you would be redirected to a success page.")
-    navigate('/') // Redirect to home for now
+    navigate('/')
   }
 
   if (cart.length === 0) {
     return (
       <MainLayout>
         <div className="flex flex-col items-center justify-center py-20 px-6 min-h-[60vh]">
-          <h2 className="font-h2 text-h2 text-primary-container mb-4">Your cart is empty</h2>
+          <h2 className="font-h2 text-h2 text-primary-container mb-4">Tu carrito está vacío</h2>
           <p className="text-on-surface-variant font-body-md mb-8 text-center max-w-md">
-            You need to add products to your cart before proceeding to checkout.
+            Debes añadir productos al carrito antes de pasar por caja.
           </p>
           <Link to="/catalog">
-            <Button>Return to Shop</Button>
+            <Button>Volver a la tienda</Button>
           </Link>
         </div>
       </MainLayout>
@@ -66,62 +65,48 @@ const Checkout = () => {
     <MainLayout>
       <main className="max-w-[1280px] mx-auto px-6 py-12">
         <div className="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-surface-container-high pb-6">
-          <h1 className="font-h1 text-h1 text-primary-container">Secure Checkout</h1>
-          <div className="flex items-center gap-2 text-on-surface-variant text-sm font-label-sm">
-            <span className="material-symbols-outlined text-secondary" style={{ fontVariationSettings: "'FILL' 1" }}>lock</span>
-            256-bit SSL Encrypted
-          </div>
+          <h1 className="font-h1 text-h1 text-primary-container">Pago seguro</h1>
         </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          
-          {/* Left: Checkout Form */}
           <div className="lg:col-span-7 flex flex-col gap-8">
             <form id="checkout-form" onSubmit={handleSubmit} className="flex flex-col gap-8">
-              
-              {/* Contact Information */}
               <section className="bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)]">
                 <div className="flex items-center justify-between mb-6">
                   <h2 className="font-h2 text-[20px] text-primary-container flex items-center gap-2">
                     <span className="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center text-sm font-bold">1</span>
-                    Contact Information
+                    Información de contacto
                   </h2>
                   <p className="text-caption text-on-surface-variant">
-                    Already have an account? <Link to="/login" className="text-secondary hover:underline font-bold">Log in</Link>
+                    ¿Ya tienes una cuenta? <Link to="/login" className="text-secondary hover:underline font-bold">Inicia sesión</Link>
                   </p>
                 </div>
                 <div className="flex flex-col gap-4">
                   <Input 
                     id="email"
                     type="email"
-                    placeholder="Email address"
+                    placeholder="Correo electrónico"
                     value={formData.email}
                     onChange={handleChange}
                     required
                   />
-                  <Checkbox id="emailOffers" className="mt-2">
-                    Email me with news and offers regarding my pet's health
-                  </Checkbox>
                 </div>
               </section>
-
-              {/* Shipping Address */}
               <section className="bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)]">
                 <h2 className="font-h2 text-[20px] text-primary-container flex items-center gap-2 mb-6">
                   <span className="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center text-sm font-bold">2</span>
-                  Shipping Address
+                  Dirección de envío
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <Input 
                     id="firstName"
-                    placeholder="First name"
+                    placeholder="Nombre"
                     value={formData.firstName}
                     onChange={handleChange}
                     required
                   />
                   <Input 
                     id="lastName"
-                    placeholder="Last name"
+                    placeholder="Apellido"
                     value={formData.lastName}
                     onChange={handleChange}
                     required
@@ -129,7 +114,7 @@ const Checkout = () => {
                   <div className="md:col-span-2">
                     <Input 
                       id="address"
-                      placeholder="Address (e.g. 123 Main St, Apt 4B)"
+                      placeholder="Dirección (e.g. 123 Main St, Apt 4B)"
                       value={formData.address}
                       onChange={handleChange}
                       required
@@ -138,18 +123,18 @@ const Checkout = () => {
                   <div className="md:col-span-2 grid grid-cols-3 gap-4">
                     <div className="col-span-1">
                       <Input 
-                        id="city"
-                        placeholder="City"
-                        value={formData.city}
+                        id="state"
+                        placeholder="Departamento"
+                        value={formData.state}
                         onChange={handleChange}
                         required
                       />
                     </div>
                     <div className="col-span-1">
                       <Input 
-                        id="state"
-                        placeholder="State"
-                        value={formData.state}
+                        id="city"
+                        placeholder="Ciudad"
+                        value={formData.city}
                         onChange={handleChange}
                         required
                       />
@@ -166,39 +151,35 @@ const Checkout = () => {
                   </div>
                   <div className="md:col-span-2 mt-2">
                     <Checkbox id="saveInfo" checked={formData.saveInfo} onChange={handleChange}>
-                      Save this information for next time
+                      Guarda esta información para la próxima vez
                     </Checkbox>
                   </div>
                 </div>
               </section>
-
-              {/* Payment Method */}
               <section className="bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)]">
                 <h2 className="font-h2 text-[20px] text-primary-container flex items-center gap-2 mb-2">
                   <span className="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center text-sm font-bold">3</span>
-                  Payment
+                  Método de pago
                 </h2>
-                <p className="text-on-surface-variant font-caption mb-6 ml-10">All transactions are secure and encrypted.</p>
+                <p className="text-on-surface-variant font-caption mb-6 ml-10">Todas las transacciones son seguras y están encriptadas.</p>
                 
                 <div className="border border-outline-variant/50 rounded-2xl overflow-hidden bg-surface-container-lowest">
-                  {/* Credit Card Option */}
                   <div className="p-4 border-b border-outline-variant/50 bg-secondary-container/5 flex items-center gap-3">
                     <input type="radio" id="creditCard" name="paymentMethod" defaultChecked className="w-4 h-4 text-secondary focus:ring-secondary cursor-pointer" />
-                    <label htmlFor="creditCard" className="font-label-sm text-primary-container flex-grow cursor-pointer">Credit card</label>
+                    <label htmlFor="creditCard" className="font-label-sm text-primary-container flex-grow cursor-pointer">Tarjeta de crédito</label>
                     <div className="flex gap-1">
                       <div className="w-8 h-5 bg-white border border-outline-variant/30 rounded flex items-center justify-center text-[10px] font-bold text-slate-500">VISA</div>
                       <div className="w-8 h-5 bg-white border border-outline-variant/30 rounded flex items-center justify-center text-[10px] font-bold text-slate-500">MC</div>
                     </div>
                   </div>
                   
-                  {/* Credit Card Form */}
                   <div className="p-4 bg-surface-container-low/30 flex flex-col gap-4">
                     <div className="relative group">
                       <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline" style={{ fontVariationSettings: "'FILL' 0" }}>credit_card</span>
                       <input 
                         id="cardNumber"
                         className="w-full pl-4 pr-12 py-3.5 rounded-xl border border-outline-variant bg-surface focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all outline-none text-body-md"
-                        placeholder="Card number"
+                        placeholder="Número de tarjeta"
                         value={formData.cardNumber}
                         onChange={handleChange}
                         required
@@ -207,7 +188,7 @@ const Checkout = () => {
                     <div className="grid grid-cols-2 gap-4">
                       <Input 
                         id="expiryDate"
-                        placeholder="Expiration date (MM / YY)"
+                        placeholder="MM / YY"
                         value={formData.expiryDate}
                         onChange={handleChange}
                         required
@@ -217,7 +198,7 @@ const Checkout = () => {
                         <input 
                           id="cvv"
                           className="w-full pl-4 pr-12 py-3.5 rounded-xl border border-outline-variant bg-surface focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all outline-none text-body-md"
-                          placeholder="Security code"
+                          placeholder="Código de seguridad"
                           value={formData.cvv}
                           onChange={handleChange}
                           required
@@ -225,24 +206,16 @@ const Checkout = () => {
                       </div>
                     </div>
                   </div>
-
-                  {/* PayPal Option */}
-                  <div className="p-4 flex items-center gap-3 hover:bg-surface-container-lowest transition-colors cursor-pointer">
-                    <input type="radio" id="paypal" name="paymentMethod" className="w-4 h-4 text-secondary focus:ring-secondary cursor-pointer" />
-                    <label htmlFor="paypal" className="font-label-sm text-primary-container flex-grow cursor-pointer">PayPal</label>
-                  </div>
                 </div>
               </section>
 
             </form>
           </div>
 
-          {/* Right: Order Summary Sidebar */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-[2rem] p-6 shadow-sm sticky top-24">
-              <h3 className="font-h2 text-[20px] text-primary-container mb-6 pb-4 border-b border-surface-container-high">Order Summary</h3>
-              
-              {/* Compact Cart Items List */}
+              <h3 className="font-h2 text-[20px] text-primary-container mb-6 pb-4 border-b border-surface-container-high">Resumen del pedido</h3>
+            
               <div className="flex flex-col gap-4 mb-6 max-h-[300px] overflow-y-auto pr-2" style={{ scrollbarWidth: 'thin' }}>
                 {cart.map(item => (
                   <div key={item.id} className="flex gap-4 items-center">
@@ -267,10 +240,10 @@ const Checkout = () => {
               <div className="flex gap-2 mb-6 pb-6 border-b border-surface-container-high">
                 <input 
                   type="text" 
-                  placeholder="Discount code" 
+                  placeholder="Código de descuento" 
                   className="w-full px-4 py-3 rounded-xl border border-outline-variant bg-surface focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all outline-none text-body-md"
                 />
-                <Button variant="secondaryContainer" className="!px-6">Apply</Button>
+                <Button variant="secondaryContainer" className="!px-6">Aplicar</Button>
               </div>
 
               {/* Totals */}
@@ -280,11 +253,11 @@ const Checkout = () => {
                   <span className="font-label-sm text-primary-container">{formatPrice(subtotal)}</span>
                 </div>
                 <div className="flex justify-between items-center text-on-surface-variant">
-                  <span className="font-body-md flex items-center gap-1">Shipping</span>
+                  <span className="font-body-md flex items-center gap-1">Envio</span>
                   <span className="font-label-sm text-primary-container">{shipping === 0 ? 'Free' : formatPrice(shipping)}</span>
                 </div>
                 <div className="flex justify-between items-center text-on-surface-variant">
-                  <span className="font-body-md">Estimated Tax</span>
+                  <span className="font-body-md">IVA</span>
                   <span className="font-label-sm text-primary-container">{formatPrice(tax)}</span>
                 </div>
               </div>
@@ -302,7 +275,7 @@ const Checkout = () => {
                 type="submit" 
                 className="w-full !py-4 text-[18px] bg-secondary text-white hover:bg-secondary/90 shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 group"
               >
-                Pay {formatPrice(total)}
+                Pagar {formatPrice(total)}
                 <span className="material-symbols-outlined transition-transform group-hover:translate-x-1" style={{ fontVariationSettings: "'FILL' 1" }}>arrow_forward</span>
               </Button>
             </div>

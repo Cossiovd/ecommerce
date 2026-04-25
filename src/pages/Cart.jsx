@@ -1,4 +1,3 @@
-import React from "react"
 import { Link } from "react-router-dom"
 import MainLayout from "../components/templates/MainLayout"
 import Button from "../components/atoms/Button"
@@ -10,50 +9,45 @@ const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCartStore()
 
   const subtotal = cart.reduce((acc, item) => acc + (parseFloat(item.price || 0) * (item.quantity || 1)), 0)
-  const shipping = subtotal > 200000 ? 0 : 15000; // Free shipping over 200,000 COP
-  const tax = subtotal * 0.19; // 19% mock tax for Colombia
+  const shipping = subtotal > 200000 ? 0 : 15000;
+  const tax = subtotal * 0.19;
   const total = subtotal > 0 ? subtotal + shipping + tax : 0;
 
   return (
     <MainLayout>
       <main className="max-w-[1280px] mx-auto px-6 py-12">
-        <h1 className="font-h1 text-h1 text-primary-container mb-8">My Cart</h1>
-
+        <h1 className="font-h1 text-h1 text-primary-container mb-8">Mi carrito</h1>
         {cart.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 text-center bg-white rounded-[2rem] shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)]">
             <div className="w-24 h-24 bg-surface-container-low rounded-full flex items-center justify-center mb-6">
               <span className="material-symbols-outlined text-[48px] text-outline-variant" style={{ fontVariationSettings: "'FILL' 0" }}>shopping_cart</span>
             </div>
-            <h2 className="font-h2 text-h2 text-primary-container mb-2">Your cart is empty</h2>
+            <h2 className="font-h2 text-h2 text-primary-container mb-2">Tu carrito está vacío</h2>
             <p className="text-on-surface-variant font-body-md mb-8 max-w-md">
-              Looks like you haven't added any premium care products for your best friend yet.
+              Parece que aún no has añadido ningún producto de cuidado premium para tu mejor amigo.
             </p>
             <Link to="/catalog">
-              <Button className="shadow-lg shadow-primary/20">Explore Products</Button>
+              <Button className="shadow-lg shadow-primary/20">Explorar productos</Button>
             </Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            
-            {/* Left: Cart Items List */}
             <div className="lg:col-span-8 flex flex-col gap-6">
               <div className="bg-white rounded-[2rem] p-6 md:p-8 shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)] flex flex-col gap-8">
                 <div className="hidden md:grid grid-cols-12 gap-4 pb-4 border-b border-surface-container-high font-label-sm text-on-surface-variant uppercase tracking-wider">
-                  <div className="col-span-6">Product</div>
-                  <div className="col-span-3 text-center">Quantity</div>
+                  <div className="col-span-6">Producto</div>
+                  <div className="col-span-3 text-center">Cantidad</div>
                   <div className="col-span-3 text-right">Total</div>
                 </div>
 
                 {cart.map(item => (
                   <div key={item.id} className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center py-4 border-b border-surface-container-high last:border-0 last:pb-0 relative group">
-                    
-                    {/* Product Info */}
                     <div className="md:col-span-6 flex items-center gap-6">
                       <div className="w-24 h-24 shrink-0 bg-surface-container-lowest rounded-2xl p-2 border border-outline-variant/30 flex items-center justify-center">
-                        <img src={item.imageSrc || item.image || item.imageUrl || 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop'} alt={item.title || 'Product'} className="w-full h-full object-contain mix-blend-multiply" />
+                        <img src={item.imageSrc || item.image || item.imageUrl} alt={item.title} className="w-full h-full object-contain mix-blend-multiply" />
                       </div>
                       <div className="flex flex-col">
-                        <span className="font-caption text-secondary uppercase tracking-wider mb-1">{item.category || 'General'}</span>
+                        <span className="font-caption text-secondary uppercase tracking-wider mb-1">{item.category}</span>
                         <Link to={`/product/${item.id}`} className="font-h3 text-[18px] text-primary-container hover:text-secondary transition-colors line-clamp-2 leading-tight mb-2">
                           {item.title}
                         </Link>
@@ -61,7 +55,6 @@ const Cart = () => {
                       </div>
                     </div>
 
-                    {/* Quantity Control */}
                     <div className="md:col-span-3 flex items-center justify-center">
                       <div className="flex items-center bg-surface-container-lowest rounded-xl border border-outline-variant/50 p-1 shadow-sm">
                         <IconButton 
@@ -79,7 +72,6 @@ const Cart = () => {
                       </div>
                     </div>
 
-                    {/* Price & Remove */}
                     <div className="md:col-span-3 flex items-center justify-between md:justify-end gap-4">
                       <span className="font-h3 text-primary-container block md:hidden">Total:</span>
                       <span className="font-h3 text-[18px] text-primary-container">{formatPrice(parseFloat(item.price || 0) * (item.quantity || 1))}</span>
@@ -96,10 +88,9 @@ const Cart = () => {
               </div>
             </div>
 
-            {/* Right: Order Summary */}
             <div className="lg:col-span-4 flex flex-col gap-6">
               <div className="bg-primary-container rounded-[2rem] p-8 text-white shadow-[0_8px_30px_rgba(10,37,64,0.15)] sticky top-24">
-                <h3 className="font-h2 text-h2 text-secondary-fixed mb-6 pb-6 border-b border-white/10">Order Summary</h3>
+                <h3 className="font-h2 text-h2 text-secondary-fixed mb-6 pb-6 border-b border-white/10">Resumen del pedido</h3>
                 
                 <div className="flex flex-col gap-4 mb-8">
                   <div className="flex justify-between items-center text-on-primary-container">
@@ -108,13 +99,13 @@ const Cart = () => {
                   </div>
                   <div className="flex justify-between items-center text-on-primary-container">
                     <span className="font-body-md flex items-center gap-1">
-                      Shipping
+                      Envío
                       <span className="material-symbols-outlined text-[16px] cursor-help" title="Free shipping over 200,000 COP">info</span>
                     </span>
                     <span className="font-label-sm text-white">{shipping === 0 ? 'Free' : formatPrice(shipping)}</span>
                   </div>
                   <div className="flex justify-between items-center text-on-primary-container">
-                    <span className="font-body-md">Estimated Tax</span>
+                    <span className="font-body-md">IVA</span>
                     <span className="font-label-sm text-white">{formatPrice(tax)}</span>
                   </div>
                 </div>
@@ -126,18 +117,12 @@ const Cart = () => {
 
                 <Link to="/checkout" className="w-full">
                   <Button className="w-full !py-4 text-[18px] bg-secondary-fixed text-on-secondary-fixed hover:bg-secondary-fixed-dim shadow-lg shadow-secondary/20 flex items-center justify-center gap-2 group">
-                    Proceed to Checkout
+                    Continuar con el pago
                     <span className="material-symbols-outlined transition-transform group-hover:translate-x-1" style={{ fontVariationSettings: "'FILL' 1" }}>lock</span>
                   </Button>
                 </Link>
-
-                <div className="mt-6 flex items-center justify-center gap-2 text-on-primary-container text-caption">
-                  <span className="material-symbols-outlined text-[16px]">verified_user</span>
-                  Secure checkout guaranteed
-                </div>
               </div>
             </div>
-
           </div>
         )}
       </main>

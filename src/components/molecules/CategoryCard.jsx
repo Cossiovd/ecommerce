@@ -1,5 +1,3 @@
-import React from 'react';
-
 const CategoryCard = ({ icon, title, subtitle, filledIcon = false }) => {
   return (
     <div className="group cursor-pointer bg-white p-8 rounded-3xl text-center shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.05)] hover:shadow-lg transition-all border border-transparent hover:border-secondary-fixed-dim">

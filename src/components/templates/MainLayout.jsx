@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../organisms/Navbar';
 import BottomNavBar from '../molecules/BottomNavBar';
 import Footer from '../organisms/Footer';
@@ -11,7 +10,6 @@ const MainLayout = ({ children }) => {
         {children}
       </main>
       <Footer />
-      {/* Keeping BottomNavBar for mobile as per original structure, though usually hidden on desktop */}
       <BottomNavBar />
     </div>
   );

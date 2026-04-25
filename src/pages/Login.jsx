@@ -34,9 +34,9 @@ const Login = () => {
         if (authError) {
             console.error('Login error:', authError.code, authError.message);
             if (authError.code === 'auth/invalid-credential' || authError.code === 'auth/user-not-found' || authError.code === 'auth/wrong-password') {
-                setError('Invalid email or password.');
+                setError('Correo electrónico o contraseña incorrectos.');
             } else {
-                setError('Failed to log in. Please try again later.');
+                setError('No se ha podido iniciar sesión. Inténtalo de nuevo más tarde.');
             }
         } else if (user) {
             navigate('/profile');
@@ -49,7 +49,6 @@ const Login = () => {
         <MainLayout>
             <main className="flex-grow flex items-center justify-center pt-24 pb-12 px-6">
                 <div className="max-w-[1100px] w-full grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
-                    {/* Visual Section (Hidden on Mobile) */}
                     <div className="hidden lg:flex flex-col items-center text-center space-y-8">
                         <div className="relative w-full aspect-square max-w-[500px]">
                             <div className="absolute inset-0 bg-secondary-container/5 rounded-full blur-3xl"></div>
@@ -61,20 +60,19 @@ const Login = () => {
                             />
                         </div>
                         <div className="space-y-4 max-w-md">
-                            <h2 className="font-h1 text-h1 text-primary-container">Clinical expertise meets compassionate care.</h2>
-                            <p className="font-body-lg text-body-lg text-on-surface-variant">Access your pet's health records, shop pharmacy essentials, and chat with experts.</p>
+                            <h2 className="font-h1 text-h1 text-primary-container">La experiencia clínica se une a una atención llena de empatía.</h2>
+                            <p className="font-body-lg text-body-lg text-on-surface-variant">Accede al historial médico de tu mascota, compra productos básicos de farmacia y chatea con expertos.</p>
                         </div>
                     </div>
 
-                    {/* Login Form Section */}
                     <div className="flex justify-center">
                         <div className="w-full max-w-[440px] bg-surface-container-lowest p-8 md:p-10 rounded-[2rem] shadow-[0_4px_20px_-4px_rgba(10,37,64,0.08)] border border-surface-variant/30">
                             <div className="text-center mb-8">
                                 <div className="inline-flex items-center justify-center p-3 bg-secondary-container/10 rounded-2xl mb-4">
                                     <span className="material-symbols-outlined text-secondary text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>lock_open</span>
                                 </div>
-                                <h3 className="font-h2 text-h2 text-primary-container">Welcome back</h3>
-                                <p className="text-on-surface-variant mt-2">Enter your credentials to manage your pet's care.</p>
+                                <h3 className="font-h2 text-h2 text-primary-container">Bienvenido de nuevo</h3>
+                                <p className="text-on-surface-variant mt-2">Introduce tus datos de acceso para gestionar la atención de tu mascota.</p>
                             </div>
 
                             {error && (
@@ -86,10 +84,10 @@ const Login = () => {
 
                             <form className="space-y-6" onSubmit={handleLogin}>
                                 <Input
-                                    label="Email Address"
+                                    label="Dirección de correo electrónico"
                                     id="email"
                                     type="email"
-                                    placeholder="name@example.com"
+                                    placeholder="Ingresaa el correo electrónico"
                                     icon="mail"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
@@ -97,7 +95,7 @@ const Login = () => {
                                 />
 
                                 <Input
-                                    label="Password"
+                                    label="Contraseña"
                                     id="password"
                                     type="password"
                                     placeholder="••••••••"
@@ -105,7 +103,7 @@ const Login = () => {
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     required
-                                    actionRight={<a className="text-caption font-caption text-secondary hover:underline" href="#">Forgot Password?</a>}
+                                    actionRight={<a className="text-caption font-caption text-secondary hover:underline" href="#">¿Has olvidado tu contraseña?</a>}
                                 />
 
                                 <Button 
@@ -117,17 +115,17 @@ const Login = () => {
                                     {loading ? (
                                         <>
                                             <span className="material-symbols-outlined animate-spin">progress_activity</span>
-                                            Logging in...
+                                            Iniciando sesión...
                                         </>
                                     ) : (
-                                        'Login'
+                                        'Iniciar sesión'
                                     )}
                                 </Button>
                             </form>
 
                             <div className="relative my-8">
                                 <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-outline-variant"></div></div>
-                                <div className="relative flex justify-center text-xs uppercase font-bold tracking-widest text-outline bg-surface-container-lowest px-4">Or continue with</div>
+                                <div className="relative flex justify-center text-xs uppercase font-bold tracking-widest text-outline bg-surface-container-lowest px-4">O continuar con</div>
                             </div>
 
                             <div className="grid grid-cols-2 gap-4">
@@ -149,8 +147,8 @@ const Login = () => {
                             </div>
 
                             <div className="mt-8 text-center">
-                                <p className="text-on-surface-variant">Don't have an account?
-                                    <Link to="/register" className="text-secondary font-bold hover:underline ml-1">Create an account</Link>
+                                <p className="text-on-surface-variant">¿No tienes una cuenta?
+                                    <Link to="/register" className="text-secondary font-bold hover:underline ml-1">Crear una cuenta</Link>
                                 </p>
                             </div>
                         </div>

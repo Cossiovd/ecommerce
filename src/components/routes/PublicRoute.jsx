@@ -24,7 +24,6 @@ const PublicRoute = ({ children }) => {
   }
 
   if (user) {
-    // Si el usuario ya está autenticado, lo redirigimos al perfil (o al inicio)
     return <Navigate to="/profile" replace />;
   }
 

@@ -27,7 +27,7 @@ const Profile = () => {
             await signOut(auth);
             navigate('/login');
         } catch (error) {
-            console.error('Error signing out:', error);
+            console.error('Error al cerrar sesión:', error);
         }
     };
 
@@ -47,17 +47,14 @@ const Profile = () => {
         <MainLayout>
             <main className="max-w-[800px] mx-auto px-6 py-12">
                 <div className="flex flex-col gap-8">
-
-                    {/* User Header */}
                     <div className="bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)] flex flex-col items-center text-center">
                         <div className="w-24 h-24 bg-primary-container text-white rounded-full flex items-center justify-center text-3xl font-bold mb-4">
                             {user.email ? user.email.charAt(0).toUpperCase() : 'U'}
                         </div>
-                        <h1 className="font-h1 text-h2 text-primary-container">{user.displayName || 'Usuario VetCare'}</h1>
+                        <h1 className="font-h1 text-h2 text-primary-container">{user.displayName || 'Cliente'}</h1>
                         <p className="text-on-surface-variant mb-6">{user.email}</p>
                     </div>
 
-                    {/* Pets Section */}
                     <div className="bg-white p-8 rounded-[2rem] shadow-[0_4px_20px_-4px_hsla(210,20%,10%,0.04)]">
                         <div className="flex justify-between items-center mb-6">
                             <h2 className="font-h2 text-h3 text-primary-container flex items-center gap-2">

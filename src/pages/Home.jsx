@@ -8,10 +8,10 @@ import CategoryCard from '../components/molecules/CategoryCard';
 import ProductCard from '../components/molecules/ProductCard';
 
 const categories = [
-  { icon: 'potted_plant', title: 'Dogs', subtitle: '240 Products', filledIcon: false },
-  { icon: 'pets', title: 'Cats', subtitle: '185 Products', filledIcon: true },
-  { icon: 'medical_services', title: 'Pharmacy', subtitle: 'Professional Grade', filledIcon: false },
-  { icon: 'nutrition', title: 'Food', subtitle: 'Organic Mixes', filledIcon: false },
+  { icon: 'pets', title: 'Perros', subtitle: '240 Productos', filledIcon: false },
+  { icon: 'pets', title: 'Gatos', subtitle: '185 Productos', filledIcon: true },
+  { icon: 'medical_services', title: 'Farmacia', subtitle: 'Calidad profesional', filledIcon: false },
+  { icon: 'food_bank', title: 'Comida', subtitle: 'Alimentos orgánicos', filledIcon: false },
 ];
 
 const Home = () => {
@@ -27,11 +27,10 @@ const Home = () => {
           ...doc.data()
         }));
         
-        // Reverse array to get the latest ones assuming they were added in order, and limit to 4
         const latestProducts = productsData.reverse().slice(0, 4);
         setNewArrivals(latestProducts);
       } catch (error) {
-        console.error("Error fetching new arrivals from Firebase:", error);
+        console.error("Error al cargar los productos más recientes", error);
       } finally {
         setLoading(false);
       }
@@ -43,14 +42,12 @@ const Home = () => {
   return (
     <MainLayout>
       <HeroSection />
-
-      {/* Quick Categories */}
       <section className="px-6 py-12 max-w-7xl mx-auto">
         <div className="flex flex-col gap-8">
           <div className="flex justify-between items-end">
             <div>
-              <h3 className="font-h1 text-h1 text-primary">Shop by category</h3>
-              <p className="text-on-surface-variant font-body-md">Everything your pet needs, organized for you.</p>
+              <h3 className="font-h1 text-h1 text-primary">Comprar por categoría</h3>
+              <p className="text-on-surface-variant font-body-md">Todo lo que tu mascota necesita, organizado para ti.</p>
             </div>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -61,13 +58,12 @@ const Home = () => {
         </div>
       </section>
 
-      {/* New Arrivals Product Cards */}
       <section className="px-6 py-12 max-w-7xl mx-auto bg-surface-container-low/50 rounded-[48px] my-12">
         <div className="flex flex-col gap-10">
           <div className="flex justify-between items-center">
             <div>
-              <h3 className="font-h1 text-h1 text-primary">New Arrivals</h3>
-              <p className="text-on-surface-variant font-body-md">Fresh items just added to our collection.</p>
+              <h3 className="font-h1 text-h1 text-primary">Novedades</h3>
+              <p className="text-on-surface-variant font-body-md">Artículos nuevos que acabamos de añadir a nuestra tienda.</p>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 min-h-[300px]">

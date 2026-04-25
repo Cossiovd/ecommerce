@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Checkbox = ({ id, label, children, ...props }) => {
   return (
     <div className="flex items-start gap-3">

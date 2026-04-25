@@ -40,13 +40,13 @@ const Register = () => {
     const register = async (email, password) => {
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            console.log("User registered:", userCredential.user);
+            console.log("Usuario registrado:", userCredential.user);
             return true;
         } catch (error) {
-            console.error("Registration error:", error.code, error.message);
-            if (error.code === 'auth/email-already-in-use') setError("This email is already registered.");
-            else if (error.code === 'auth/weak-password') setError("Password should be at least 6 characters.");
-            else setError("Failed to create account. Please try again.");
+            console.error("Error al registrar usuario:", error.code, error.message);
+            if (error.code === 'auth/email-already-in-use') setError("Este correo electrónico ya está registrado.");
+            else if (error.code === 'auth/weak-password') setError("La contraseña debe tener al menos 6 caracteres.");
+            else setError("Error al crear la cuenta. Por favor, intenta nuevamente.");
             return false;
         }
     };
@@ -56,12 +56,12 @@ const Register = () => {
         setError("");
 
         if (formData.password !== formData.confirmPassword) {
-            setError("Passwords do not match");
+            setError("Las contraseñas no coinciden");
             return;
         }
 
         if (!formData.agreeTerms) {
-            setError("You must agree to the Terms and Conditions");
+            setError("Debes aceptar los términos y condiciones");
             return;
         }
 
@@ -78,8 +78,6 @@ const Register = () => {
         <MainLayout>
             <main className="flex-grow flex items-center justify-center pt-24 pb-12 px-6">
                 <div className="max-w-[1100px] w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
-                    {/* ── Left: Visual Anchor (hidden on mobile) ── */}
                     <div className="hidden lg:flex lg:col-span-6 flex-col gap-8">
                         <div className="relative rounded-3xl overflow-hidden shadow-2xl h-[600px]">
                             <img
@@ -90,30 +88,24 @@ const Register = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-transparent to-transparent" />
                             <div className="absolute bottom-12 left-12 right-12 text-white">
                                 <h2 className="font-display text-display mb-4">
-                                    Trusted care for your best friends.
+                                    Cuidado de confianza para tus mejores amigos.
                                 </h2>
                                 <p className="font-body-lg text-body-lg opacity-90 max-w-md">
-                                    Join over 10,000 pet owners who trust VetCare for their medical needs.
+                                    Únete a los más de 10 000 propietarios de mascotas que confían en VetCare para atender las necesidades médicas de sus mascotas.
                                 </p>
                             </div>
                         </div>
                     </div>
-
-                    {/* ── Right: Registration Form ── */}
                     <div className="lg:col-span-6 w-full max-w-[480px] mx-auto">
                         <div className="bg-surface-container-lowest p-8 md:p-12 rounded-[2rem] shadow-[0_4px_20px_-4px_rgba(10,37,64,0.08)] border border-white">
-
-                            {/* Header */}
                             <div className="mb-10">
                                 <h1 className="font-h1 text-h1 text-primary-container mb-2">
-                                    Create an account
+                                    Crear una cuenta
                                 </h1>
                                 <p className="font-body-md text-body-md text-on-surface-variant">
-                                    Start your journey to better pet health today.
+                                    Empieza hoy mismo tu camino hacia una mejor salud para tu mascota.
                                 </p>
                             </div>
-
-                            {/* Form */}
                             {error && (
                                 <div className="mb-6 p-4 bg-error-container/20 border border-error-container text-error rounded-xl font-body-sm flex items-center gap-2">
                                     <span className="material-symbols-outlined">error</span>
@@ -169,13 +161,13 @@ const Register = () => {
                                         checked={formData.agreeTerms}
                                         onChange={handleChange}
                                     >
-                                        I agree to the{" "}
+                                        Acepto los {" "}
                                         <a className="text-secondary font-semibold hover:underline" href="#">
-                                            Terms and Conditions
+                                            Términos y condiciones
                                         </a>{" "}
-                                        and{" "}
+                                        y{" "}
                                         <a className="text-secondary font-semibold hover:underline" href="#">
-                                            Privacy Policy
+                                            Política de Privacidad
                                         </a>
                                         .
                                     </Checkbox>
@@ -190,11 +182,11 @@ const Register = () => {
                                     {loading ? (
                                         <>
                                             <span className="material-symbols-outlined animate-spin">progress_activity</span>
-                                            Creating...
+                                            Creando cuenta...
                                         </>
                                     ) : (
                                         <>
-                                            Create Account
+                                            Crear cuenta
                                             <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">
                                                 arrow_forward
                                             </span>
@@ -208,7 +200,7 @@ const Register = () => {
                                 <div className="flex items-center gap-4">
                                     <div className="h-px flex-grow bg-surface-container-high" />
                                     <span className="font-caption text-caption text-on-surface-variant">
-                                        Or sign up with
+                                        O regístrate con
                                     </span>
                                     <div className="h-px flex-grow bg-surface-container-high" />
                                 </div>
@@ -235,11 +227,10 @@ const Register = () => {
                                     </button>
                                 </div>
 
-                                {/* Link to login */}
                                 <p className="text-center font-body-md text-body-md text-on-surface-variant">
-                                    Already have an account?{" "}
+                                    Ya tienes una cuenta?{" "}
                                     <Link to="/login" className="text-secondary font-bold hover:underline">
-                                        Log in
+                                        Inicia sesión
                                     </Link>
                                 </p>
                             </div>
