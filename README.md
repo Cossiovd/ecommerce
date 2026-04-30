@@ -2,7 +2,7 @@
 
 VetCare es una plataforma de comercio electrónico moderna, rápida y completamente funcional, diseñada para clínicas veterinarias y tiendas de mascotas. Permite a los usuarios explorar productos, gestionar su carrito de compras y realizar transacciones de forma segura.
 
-**🔗 Demo en vivo:** [https://cossiovd.github.io/ecommerce/](https://cossiovd.github.io/ecommerce/)
+**🔗 Demo en vivo:** [https://dcossiodev.github.io/ecommerce/](https://dcossiodev.github.io/ecommerce/)
 
 ## 🚀 Características Principales
 
