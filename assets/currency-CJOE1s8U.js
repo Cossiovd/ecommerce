@@ -1,0 +1,1 @@
+const n=t=>{if(t==null)return"";const r=parseFloat(typeof t=="string"?t.replace(/[^0-9.-]+/g,""):t);return isNaN(r)?t:new Intl.NumberFormat("es-CO",{style:"currency",currency:"COP",minimumFractionDigits:0,maximumFractionDigits:0}).format(r)};export{n as f};
