@@ -1,3 +1,12 @@
+import prod_9 from '../assets/prod_9.jpg';
+import prod_11 from '../assets/prod_11.png';
+import prod_3 from '../assets/prod_3.jpg';
+import prod_2 from '../assets/prod_2.jpg';
+import prod_8 from '../assets/prod_8.jpg';
+import prod_4 from '../assets/prod_4.jpg';
+import prod_6 from '../assets/prod_6.jpg';
+import prod_7 from '../assets/prod_7.jpg';
+
 export const veterinaryProducts = [
   {
     title: "Alimento Premium para Perros Adultos",
@@ -5,7 +14,7 @@ export const veterinaryProducts = [
     stock: 45,
     price: 180000,
     category: "Alimentación",
-    image: "src/assets/prod_9.jpg"
+    image: prod_9
   },
   {
     title: "Croquetas de Salmón para Gatos",
@@ -13,7 +22,7 @@ export const veterinaryProducts = [
     stock: 30,
     price: 114000,
     category: "Alimentación",
-    image: "src/assets/prod_11.png"
+    image: prod_11
   },
   {
     title: "Collar",
@@ -21,7 +30,7 @@ export const veterinaryProducts = [
     stock: 120,
     price: 220000,
     category: "Accesorios",
-    image: "src/assets/prod_3.jpg"
+    image: prod_3
   },
   {
     title: "Shampoo Avena y Aloe Vera",
@@ -29,7 +38,7 @@ export const veterinaryProducts = [
     stock: 60,
     price: 60000,
     category: "Higiene",
-    image: "src/assets/prod_2.jpg"
+    image: prod_2
   },
   {
     title: "Cama Ortopédica Memory Foam",
@@ -37,7 +46,7 @@ export const veterinaryProducts = [
     stock: 15,
     price: 360000,
     category: "Accesorios",
-    image: "src/assets/prod_8.jpg"
+    image: prod_8
   },
   {
     title: "Vitaminas Articulares Condroprotectoras",
@@ -53,7 +62,7 @@ export const veterinaryProducts = [
     stock: 50,
     price: 88000,
     category: "Juguetes",
-    image: "src/assets/prod_4.jpg"
+    image: prod_4
   },
   {
     title: "Cepillo Deslanador Profesional",
@@ -69,7 +78,7 @@ export const veterinaryProducts = [
     stock: 85,
     price: 98000,
     category: "Higiene",
-    image: "src/assets/prod_7.jpg"
+    image: prod_7
   },
   {
     title: "Snacks Dentales Limpieza Profunda",
@@ -77,6 +86,6 @@ export const veterinaryProducts = [
     stock: 200,
     price: 50000,
     category: "Snacks",
-    image: "src/assets/prod_6.jpg"
+    image: prod_6
   }
 ];
